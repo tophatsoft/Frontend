@@ -38,9 +38,26 @@ class Register extends Component {
         super();
         this.state = {
             profileType: '',
-            dob1: new Date(),
-            profileType:'',            
+            maleDOB: new Date(),        
             constitutionMale:'',
+            heightMale:'',
+            eyesColourMale:'',
+            hairMale:'',
+            tatoosMale:'',
+            piercingMale:'',
+            smokingMale:'',
+            alcoholMale:'',
+            maleDescription:'',
+            femaleDOB:new Date(),
+            constitutionFemale:'',
+            heightFemale:'',
+            eyesColourFemale:'',
+            hairFemale:'',
+            tattoosFemale:'',
+            piercingFemale:'',
+            smokingFemale:'',
+            alcoholFemale:'',
+            femaleDescription:'',
             name: '',
             email: '',
             password: '',
@@ -56,7 +73,6 @@ class Register extends Component {
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleInputChange2 = this.handleInputChange2.bind(this);
         this.checkProfileType = this.checkProfileType.bind(this);
         this.coupleRegister = this.coupleRegister.bind(this);
         this.finishRegister = this.finishRegister.bind(this);
@@ -65,20 +81,12 @@ class Register extends Component {
 
     handleInputChange(e) {
         this.setState({
-            dob1: this.getPickerValue,
-            profileType: e.target.value,
-            constitutionMale: this.state.constitutionMale,
             [e.target.name]: e.target.value
 
         })
         
     }
-    handleInputChange2(e) {
-        this.setState({
-            constitutionMale: e.target.value
-        })
-        
-    }
+    
 
 
     
@@ -86,18 +94,38 @@ class Register extends Component {
         this.e.preventDefault();
         const user = {
             profileType: this.state.profileType,
-            dob1: this.state.dob1,
+            maleDOB: this.state.maleDOB,
             constitutionMale: this.state.constitutionMale,
+            heightMale: this.state.heightMale,
             name: this.state.name,
             email: this.state.email,
             password: this.state.password,
-            verifyPassword: this.state.verifyPassword
+            verifyPassword: this.state.verifyPassword,
+            eyesColourMale: this.state.eyesColourMale,
+            hairMale: this.state.hairMale,
+            tatoosMale:this.state.tatoosMale,
+            piercingMale: this.state.piercingMale,
+            smokingMale:this.state.smokingMale,
+            alcoholMale:this.state.alcoholMale,
+            maleDescription:this.state.maleDescription,
+            femaleDOB: this.state.femaleDOB,
+            constitutionFemale: this.state.constitutionFemale,
+            heightFemale: this.state.heightFemale,
+            eyesColourFemale: this.state.eyesColourFemale,
+            hairFemale:this.state.hairFemale,
+            tattoosFemale: this.state.tattoosFemale,
+            piercingFemale: this.state.piercingFemale,
+            smokingFemale: this.state.smokingFemale,
+            alcoholFemale: this.state.alcoholFemale,
+            femaleDescription: this.state.femaleDescription
         }
-        console.log(user);
+        this.confirmAccount;
         this.props.registerUser(user, this.props.history);
+
     }
     getPickerValue = (value) => {
-        this.setState.dob1= value;
+        this.setState.maleDOB= value;
+        this.setState.femaleDOB=value;
         
       }
     checkProfileType(e) {
@@ -105,8 +133,6 @@ class Register extends Component {
         if (this.state.profileType === 'male') {
             alert("Merge la barbat");
             this.setState({ show1: false, show2: true, show4:true})
-            console.log(this.state.profileType);
-            //console.log("De aici vine");
         }
         else if (this.state.profileType === 'female') {
             alert('Merge si la femeie');
@@ -122,27 +148,64 @@ class Register extends Component {
     }
 
     finishRegister(e) {
-        //const userProfile= this.state.profileType;
-        //const userDOB = this.state.dob1;
+        const userProfile= this.state.profileType;
+        const maleDOB = this.state.maleDOB;
         const constitutionMale = this.state.constitutionMale;
+        const height = this.state.heightMale;
+        const eyesColourMale = this.state.eyesColourMale;
+        const hairMale = this.state.hairMale;
+        const tatoosMale = this.state.tatoosMale;
+        const piercingMale = this.state.piercingMale;
+        const smokingMale = this.state.smokingMale;
+        const alcoholMale = this.state.alcoholMale;
+        const maleDescription = this.state.maleDescription;
+        const femaleDOB = this.state.femaleDOB
+        const constitutionFemale = this.state.constitutionFemale
+        const heightFemale = this.state.heightFemale
+        const eyesColourFemale = this.state.eyesColourFemale
+        const hairFemale = this.state.hairFemale
+        const tattoosFemale = this.state.tattoosFemale
+        const piercingFemale = this.state.piercingFemale
+        const smokingFemale = this.state.smokingFemale
+        const alcoholFemale = this.state.alcoholFemale
+        const femaleDescription = this.state.femaleDescription
+       
         if ((this.state.profileType === 'male') && (this.state = { show1: false })) {
             this.setState({ show1: false, show2: false, show4: false, show5: false, show6: true, show7: false })
             alert("Merge spre ultima pagina barbat");
             //doar pentru testare
-            //console.log(userDOB);
-            //console.log(userProfile);
-            console.log(constitutionMale);
-            
-            
-            
+            console.log(maleDOB, userProfile, constitutionMale, height,  eyesColourMale, tatoosMale, piercingMale, smokingMale, alcoholMale, maleDescription);
         }
         else if ((this.state.profileType === 'female') && (this.state = { show1: false })) {
             this.setState({ show1: false, show2: false, show3: false,  show4: false, show5: false, show6: true, show7: false })
-            alert("Merge spre ultima pagina femeie")
+            alert("Merge spre ultima pagina femeie");
+            console.log(femaleDOB,
+                constitutionFemale,
+                heightFemale,
+                eyesColourFemale,
+                hairFemale,
+                tattoosFemale,
+                piercingFemale,
+                smokingFemale,
+                alcoholFemale,
+                femaleDescription
+                );
         }
         else {
             this.setState({ show1: false, show2:false, show3:false, show5: false, show4: false, show6: true })
             alert("Merge spre ultima pagina cuplu")
+            console.log(maleDOB, userProfile, constitutionMale, height,  eyesColourMale, tatoosMale, piercingMale, smokingMale, alcoholMale, maleDescription);
+            console.log(femaleDOB,
+                constitutionFemale,
+                heightFemale,
+                eyesColourFemale,
+                hairFemale,
+                tattoosFemale,
+                piercingFemale,
+                smokingFemale,
+                alcoholFemale,
+                femaleDescription
+                );
         }
     }
     coupleRegister(e){
@@ -183,6 +246,7 @@ class Register extends Component {
                                                     <MDBInputGroup
                                                         textClassName="red lighten-3"
                                                         containerClassName="mb-3"
+                                                        className="mb-3"
                                                         prepend="Profile type"
                                                         inputs={
                                                             <select required getValue={this.setState.profileType} name="profileType" defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
@@ -207,12 +271,13 @@ class Register extends Component {
                                                         </h3>
                                                         <hr className="hr-light" />
                                                         <p>Date of birth</p>
-                                                        <MDBDatePicker  containerClassName="mb-3" onChange={this.handleInputChange} className="browser-default custom-select"  format="M / D/YY" getValue={this.getPickerValue} />
+                                                        <MDBDatePicker  containerClassName="mb-3" onChange={this.handleInputChange} className="browser-default custom-select"  name="maleDOB" format="M / D/YY" getValue={this.getPickerValue} />
                                                         <MDBInputGroup
-                                                            containerClassName="mb-3"
+                                                        
+                                                            //containerClassName="mb-3"
                                                             prepend="Constitutie"
                                                             inputs={
-                                                                <select required name="constitutionMale" getValue={this.setState.constitutionMale} defaultValue={'DEFAULT'}  onChange={this.handleInputChange2} className="browser-default custom-select">
+                                                                <select required name="constitutionMale" getValue={this.setState.constitutionMale} defaultValue={'DEFAULT'}  onChange={this.handleInputChange} className="browser-default custom-select">
                                                                     <option value="DEFAULT" disabled>Choose...</option>
                                                                     <option value="Fat">Fat</option>
                                                                     <option value="Athletic">Athletic</option>
@@ -224,13 +289,13 @@ class Register extends Component {
 
                                                         />
                                                         <MDBInput
-                                                            label="Inatimea in cm" type="number" pattern="[0-9]*"
+                                                            required name="heightMale" label="Inatimea in cm" type="number" pattern="[0-9]*" onChange={this.handleInputChange} value={this.setState.heightMale}
                                                         />
                                                         <MDBInputGroup
                                                             containerClassName="mb-3"
                                                             prepend="Eyes colour"
                                                             inputs={
-                                                                <select defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
+                                                                <select required name="eyesColourMale" defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
                                                                     <option value="DEFAULT" disabled>Choose...</option>
                                                                     <option value="Brown">Brown</option>
                                                                     <option value="Black">Black</option>
@@ -243,7 +308,7 @@ class Register extends Component {
                                                             containerClassName="mb-3"
                                                             prepend="Hair length"
                                                             inputs={
-                                                                <select defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
+                                                                <select required name="hairMale" defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
                                                                     <option value="DEFAULT" disabled>Choose...</option>
                                                                     <option value="Bald">Bald</option>
                                                                     <option value="Short">Short</option>
@@ -256,7 +321,7 @@ class Register extends Component {
                                                             containerClassName="mb-3"
                                                             prepend="Tatoos"
                                                             inputs={
-                                                                <select defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
+                                                                <select required name="tatoosMale" defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
                                                                     <option value="DEFAULT" disabled>Choose...</option>
                                                                     <option value="No">No</option>
                                                                     <option value="One">One</option>
@@ -269,7 +334,7 @@ class Register extends Component {
                                                             containerClassName="mb-3"
                                                             prepend="Piercing"
                                                             inputs={
-                                                                <select defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
+                                                                <select required name="piercingMale" defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
                                                                     <option value="DEFAULT" disabled>Choose...</option>
                                                                     <option value="Yes">Yes</option>
                                                                     <option value="No">No</option>
@@ -280,7 +345,7 @@ class Register extends Component {
                                                             containerClassName="mb-3"
                                                             prepend="Smoking"
                                                             inputs={
-                                                                <select defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
+                                                                <select required name="smokingMale" defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
                                                                     <option value="DEFAULT" disabled>Choose...</option>
                                                                     <option value="No">No</option>
                                                                     <option value="Occasional">Occasional</option>
@@ -293,7 +358,7 @@ class Register extends Component {
                                                             containerClassName="mb-3"
                                                             prepend="Alcohol"
                                                             inputs={
-                                                                <select defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
+                                                                <select required name="alcoholMale" defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
                                                                     <option value="DEFAULT" disabled>Choose...</option>
                                                                     <option value="No">No</option>
                                                                     <option value="Social">Social drinker</option>
@@ -302,7 +367,7 @@ class Register extends Component {
                                                                 </select>
                                                             }
                                                         />
-                                                        <MDBInput type="textarea" label="Your description" outline />
+                                                        <MDBInput required name="maleDescription" type="textarea" rows="2" maxLength="200" onChange={this.handleInputChange} label="Your description" outline />
                                                     </Fragment>}
                                                     {this.state.show4 && <MDBBtn gradient="purple" className="float-right"  onClick={this.finishRegister}>
                                                         Next <MDBIcon icon="angle-double-right" className="ml-1" />
@@ -317,12 +382,12 @@ class Register extends Component {
                                                         </h3>
                                                         <hr className="hr-light" />
                                                         <p>Date of birth</p>
-                                                        <MDBDatePicker containerClassName="mb-3" className="browser-default custom-select" getValue={this.getPickerValue} />
+                                                        <MDBDatePicker containerClassName="mb-3" onChange={this.handleInputChange} className="browser-default custom-select" name="femaleDOB" format="M / D/YY" getValue={this.getPickerValue} />
                                                         <MDBInputGroup
                                                             containerClassName="mb-3"
                                                             prepend="Constitutie"
                                                             inputs={
-                                                                <select defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
+                                                                <select required name="constitutionFemale" defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
                                                                     <option value="DEFAULT" disabled>Choose...</option>
                                                                     <option value="Fat">Fat</option>
                                                                     <option value="Athletic">Athletic</option>
@@ -332,13 +397,13 @@ class Register extends Component {
                                                             }
                                                         />
                                                         <MDBInput
-                                                            label="Inatimea in cm" type="number" pattern="[0-9]*"
+                                                            required name="heightFemale" label="Inatimea in cm" type="number" pattern="[0-9]*" onChange={this.handleInputChange} value={this.setState.heightFemale}
                                                         />
                                                         <MDBInputGroup
                                                             containerClassName="mb-3"
                                                             prepend="Eyes colour"
                                                             inputs={
-                                                                <select defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
+                                                                <select required name="eyesColourFemale"defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
                                                                     <option value="DEFAULT" disabled>Choose...</option>
                                                                     <option value="Brown">Brown</option>
                                                                     <option value="Black">Black</option>
@@ -351,7 +416,7 @@ class Register extends Component {
                                                             containerClassName="mb-3"
                                                             prepend="Hair length"
                                                             inputs={
-                                                                <select defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
+                                                                <select required name="hairFemale" defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
                                                                     <option value="DEFAULT" disabled>Choose...</option>
                                                                     <option value="Bald">Bald</option>
                                                                     <option value="Short">Short</option>
@@ -364,7 +429,7 @@ class Register extends Component {
                                                             containerClassName="mb-3"
                                                             prepend="Tatoos"
                                                             inputs={
-                                                                <select defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
+                                                                <select required name="tattoosFemale" defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
                                                                     <option value="DEFAULT" disabled>Choose...</option>
                                                                     <option value="No">No</option>
                                                                     <option value="One">One</option>
@@ -377,7 +442,7 @@ class Register extends Component {
                                                             containerClassName="mb-3"
                                                             prepend="Piercing"
                                                             inputs={
-                                                                <select defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
+                                                                <select required name="piercingFemale" defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
                                                                     <option value="DEFAULT" disabled>Choose...</option>
                                                                     <option value="Yes">Yes</option>
                                                                     <option value="No">No</option>
@@ -388,7 +453,7 @@ class Register extends Component {
                                                             containerClassName="mb-3"
                                                             prepend="Smoking"
                                                             inputs={
-                                                                <select defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
+                                                                <select required name="smokingFemale" defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
                                                                     <option value="DEFAULT" disabled>Choose...</option>
                                                                     <option value="No">No</option>
                                                                     <option value="Occasional">Occasional</option>
@@ -399,9 +464,10 @@ class Register extends Component {
                                                         />
                                                         <MDBInputGroup
                                                             containerClassName="mb-3"
+                                                            className="mb-3"
                                                             prepend="Alcohol"
                                                             inputs={
-                                                                <select defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
+                                                                <select required name="alcoholFemale" defaultValue={'DEFAULT'} onChange={this.handleInputChange} className="browser-default custom-select">
                                                                     <option value="DEFAULT" disabled>Choose...</option>
                                                                     <option value="No">No</option>
                                                                     <option value="Social">Social drinker</option>
@@ -410,7 +476,7 @@ class Register extends Component {
                                                                 </select>
                                                             }
                                                         />
-                                                        <MDBInput type="textarea" label="Your description" outline />
+                                                        <MDBInput name="femaleDescription" type="textarea" rows="2" maxLength="200" onChange={this.handleInputChange} label="Your description" outline />
                                                     </Fragment>}
                                                     {this.state.show5 && <MDBBtn gradient="purple" className="float-right" type="submit" value="Submit" onClick={this.finishRegister}>
                                                         Next <MDBIcon icon="angle-double-right" className="ml-1" />
@@ -449,7 +515,7 @@ class Register extends Component {
                                                             value={this.state.verifyPassword}
                                                         />
                                                         <div className="text-center mt-4 black-text">
-                                                            <MDBBtn type="submit" color="indigo" onClick={this.confirmAccount}>Sign Up</MDBBtn>
+                                                            <MDBBtn type="submit" color="indigo">Sign Up</MDBBtn>
                                                             {this.props.errors ? <p style={{ color: 'red' }}>{this.props.errors.errorMessage}</p> : null}
 
                                                             <hr className="hr-light" />
